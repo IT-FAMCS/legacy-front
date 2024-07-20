@@ -26,7 +26,7 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
             }
           }}
           variant="outlined"
-          sx={{ color: "white", borderColor: "white", marginX: "5px" }}
+          sx={{ color: "white", borderColor: "white" }}
         >
           На главную
         </Button>

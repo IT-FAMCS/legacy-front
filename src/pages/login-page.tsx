@@ -47,11 +47,18 @@ function LoginPage() {
           margin="normal"
           className={isBadData ? "error" : ""}
         />
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          sx={{ marginTop: "0.5rem" }}
+        >
           Войти
         </Button>
         {isBadData && (
-          <p style={{ color: "red" }}>Логин или пароль введены неверно</p>
+          <p style={{ color: "red", marginTop: "0.5rem" }}>
+            Логин или пароль введены неверно
+          </p>
         )}
       </form>
     </div>
