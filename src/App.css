@@ -1,0 +1,144 @@
+main {
+  overflow-y: scroll;
+  height: calc(100vh - 120px);
+}
+
+.app-header {
+  background-color: rgb(25, 70, 124);
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: #ffffff;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.app-header__block {
+  display: flex;
+  align-items: center;
+}
+
+.project-name {
+  text-align: center;
+  padding-left: 20px;
+}
+.racccon-logo {
+  width: 55px;
+  height: 40px;
+  margin-left: 20px;
+}
+
+.buttons {
+  text-align: center;
+  flex-wrap: wrap;
+}
+.section-name {
+  margin: 40px 10px 15px 10px;
+  font-size: 50px;
+  color: rgb(25, 70, 124);
+  font-weight: 700;
+  text-align: center;
+}
+.section-name_second {
+  margin: 25px 10px 15px 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.app-footer {
+  background-color: rgb(25, 70, 124);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.app-footer__name {
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.error
+  .MuiTextField-root
+  .MuiOutlinedInput-root
+  .MuiOutlinedInput-notchedOutline {
+  border-color: red;
+}
+
+::selection {
+  color: white;
+  background-color: rgb(25, 70, 124);
+}
+
+.login-form {
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration-form {
+  margin: 0 auto;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-wrapper,
+.registration-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+}
+
+.page-info-wrapper {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.loading {
+  height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+figure img {
+  border-radius: 50%;
+}
+
+figure figcaption {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.page-info-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 5rem;
+  gap: 24px;
+  text-align: left;
+}

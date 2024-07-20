@@ -1,0 +1,11 @@
+export const departments = [{short_title: 'fandraiz'},
+    {short_title: 'rabochka'},
+    {short_title: 'nauchka'},
+    {short_title: 'decoratorka'},
+    {short_title: 'it'},
+    {short_title: 'korporativ'},
+    {short_title: 'kreatorka'},
+    {short_title: 'medyika'},
+    {short_title: 'photovideo'},
+    {short_title: 'tiktok'},
+  ]
