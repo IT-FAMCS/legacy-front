@@ -5,7 +5,7 @@
 }
 
 main {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100vh - 120px);
 }
 
@@ -65,6 +65,8 @@ main {
   justify-content: space-between;
   padding-left: 30px;
   padding-right: 30px;
+  position: sticky;
+  z-index: 1000;
 }
 .app-footer__name {
   color: #ffffff;
