@@ -52,10 +52,10 @@ function RoutesComponent({
       setLoading(true);
       clearTimeout(timeout);
     };
-  }, []); //if location pathname changing -> useEffect start work
+  }, []);
 
   return userInfo === undefined || loading ? (
-    <Route path="*" element={<Loader />} /> //loading перенести сюда!!
+    <Loader />
   ) : (
     <Routes>
       {userInfo?.valid
