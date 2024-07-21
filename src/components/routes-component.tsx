@@ -55,7 +55,7 @@ function RoutesComponent({
   }, []); //if location pathname changing -> useEffect start work
 
   return userInfo === undefined || loading ? (
-    <Loader /> //loading перенести сюда!!
+    <Route path="*" element={<Loader />} /> //loading перенести сюда!!
   ) : (
     <Routes>
       {userInfo?.valid
