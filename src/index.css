@@ -15,9 +15,23 @@ body {
 * {
   margin: 0;
   padding: 0;
+  scrollbar-width: none; /*мб вернем для отображения скролла синего цвета без фона*/
+  scrollbar-color: #19467c #ffffff00;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff00;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #19467c;
 }
