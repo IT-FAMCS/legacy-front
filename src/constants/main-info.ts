@@ -1,30 +1,30 @@
-export const mainPageInfo = [
+export const mainInfo = [
   {
     header: "Для председателя",
-    link: "/for-head",
+    link: "for-head",
   },
   {
     header: "Советы новому активисту",
-    link: "/active-advices",
+    link: "active-advices",
   },
   {
     header: "Как пробиться в менеджмент/управление",
-    link: "/about-management",
+    link: "about-management",
   },
   {
     header: "FAQ для активиста",
-    link: "/main-faq",
+    link: "main-faq",
   },
   {
     header: "Критерии поощрений",
-    link: "/exclusion-criteria",
+    link: "exclusion-criteria",
   },
   {
     header: "Критерии исключения",
-    link: "/award-criteria",
+    link: "award-criteria",
   },
   {
     header: "История",
-    link: "/history",
+    link: "history",
   },
 ];

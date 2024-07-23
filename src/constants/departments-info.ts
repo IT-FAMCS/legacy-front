@@ -2,52 +2,51 @@ export const departmentsInfo = [
   {
     header: "Рабочка",
     text: "Информация про рабочий отдел",
-    link: "/rabochka",
+    link: "work-dep",
   },
   {
     header: "Научка",
     text: "Информация про научный отдел",
-    link: "/nauchka",
+    link: "science-dep",
   },
   {
     header: "Фандрайз",
     text: "Информация про отдел фандрайзинга",
-
-    link: "/fandraiz",
+    link: "fundraising",
   },
   {
     header: "Декораторка",
     text: "Информация про отдел декора",
-    link: "/decoratorka",
+    link: "decore-dep",
   },
   {
     header: "IT-отдел",
     text: "Информация про IT-отдел",
-    link: "/it",
+    link: "it-dep",
   },
   {
     header: "Корпоративный",
     text: "Информация про корпоративный отдел",
-    link: "/korporativ",
+    link: "events-dep",
   },
   {
     header: "Креаторка",
     text: "Информация про креативный отдел",
-    link: "/kreatorka",
+    link: "creations-dep",
   },
   {
     header: "Медийка",
     text: "Информация про медиа-отдел",
-    link: "/medyika",
+    link: "media-dep",
   },
   {
     header: "Фото/Видео",
     text: "Информация про отдел фото и видео",
-    link: "/photovideo",
+    link: "photo-video-dep",
   },
   {
     header: "TikTok",
     text: "Информация про TikTok отдел",
-    link: "/tiktok",
+    link: "tiktok-dep",
   },
 ];

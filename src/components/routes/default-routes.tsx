@@ -1,31 +1,33 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { departments, events } from "../../constants";
-import { mainInfo } from "../../constants/all-main-info";
+
 import CreatorsPage from "../../pages/creators-page";
 import DepartmentTemplate from "../../pages/department-template/department-template";
 import EventTemplate from "../../pages/event-template/event-template";
 import HomePage from "../../pages/home-page/home-page";
 import MainInfoTemplate from "../../pages/main-info-template/main-info-template";
 import RegistrationPage from "../../pages/registration-page";
+import { departmentsInfo } from "../../constants/departments-info";
+import { eventsInfo } from "../../constants/events-info";
+import { mainInfo } from "../../constants/main-info";
 
 const routes = [
   { path: "/", element: <HomePage /> },
-  ...departments.map((department) => {
+  ...departmentsInfo.map((department) => {
     return {
-      path: `/${department.short_title}`,
-      element: <DepartmentTemplate departmentName={department.short_title} />,
+      path: `/${department.link}`,
+      element: <DepartmentTemplate departmentName={department.link} />,
     };
   }),
-  ...events.map((event) => {
+  ...eventsInfo.map((event) => {
     return {
-      path: `/${event.short_title}`,
-      element: <EventTemplate eventTitle={event.short_title} />,
+      path: `/${event.link}`,
+      element: <EventTemplate eventTitle={event.link} />,
     };
   }),
   ...mainInfo.map((event) => {
     return {
-      path: `/${event.short_title}`,
-      element: <MainInfoTemplate mainInfoName={event.short_title} />,
+      path: `/${event.link}`,
+      element: <MainInfoTemplate mainInfoName={event.link} />,
     };
   }),
   { path: "/registration", element: <RegistrationPage /> },

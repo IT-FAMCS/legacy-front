@@ -1,34 +1,34 @@
 export const eventsInfo = [
   {
     header: "Тур-Тропа",
-    link: "/turtropa",
+    link: "tour-trail",
   },
   {
     header: "Пиар",
-    link: "/piar",
+    link: "pr-campaign",
   },
   {
     header: "Капустник",
-    link: "/kapustnik",
+    link: "skit",
   },
   {
     header: "Science.conf",
-    link: "/scienceconf",
+    link: "science-conf",
   },
   {
     header: "ФПМушка",
-    link: "/fpmushka",
+    link: "famcs-NY",
   },
   {
     header: "День Рождения Научки",
-    link: "/drnauchki",
+    link: "science-HP",
   },
   {
     header: "Мисс/Мистер",
-    link: "/mistermiss",
+    link: "mister-miss",
   },
   {
     header: "День Рождения ФПМИ",
-    link: "/drfpmi",
+    link: "famcs-HP",
   },
 ];
