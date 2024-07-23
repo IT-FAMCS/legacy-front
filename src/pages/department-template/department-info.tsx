@@ -1,6 +1,5 @@
 import { DepatmentInfo } from "../../interfaces/department";
 import BBCode from "@bbob/react";
-import presetReact from "@bbob/preset-react";
 import { options, plugins } from "../../constants/bbob";
 
 export function DepartmentInfoComponent({

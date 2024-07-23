@@ -4,6 +4,7 @@ import useDepartment from "../../hooks/useDepartment";
 import { Button, Input } from "@mui/material";
 import { Box } from "@mui/material";
 import { TextField } from "@mui/material";
+import { BBCodeHint } from "../../components/bbcode-hint";
 
 export function DepartmentForm({
   departmentInfo,
@@ -30,10 +31,11 @@ export function DepartmentForm({
               //выводить что что-то не так
             });
         }}
+        sx={{ marginX: "1rem" }}
       >
         Сохранить
       </Button>
-
+      <BBCodeHint />
       <Box
         component="form"
         sx={{

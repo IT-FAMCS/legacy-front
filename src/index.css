@@ -15,7 +15,7 @@ body {
 * {
   margin: 0;
   padding: 0;
-  scrollbar-width: none; /*мб вернем для отображения скролла синего цвета без фона*/
+  scrollbar-width: none; /*мб вернем для отображения скролла синего цвета прозрачного фона*/
   scrollbar-color: #19467c #ffffff00;
 }
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import useQuestions from "../../hooks/useQuestions";
 import { QuestionInfo } from "../../interfaces/question";
 import { Box, Button, Input, TextField } from "@mui/material";
+import { BBCodeHint } from "../../components/bbcode-hint";
 
 export function MainInfoForm({
   mainQuestionInfo,
@@ -28,10 +29,11 @@ export function MainInfoForm({
               //выводить что что-то не так
             });
         }}
+        sx={{ marginX: "1rem" }}
       >
         Сохранить
       </Button>
-
+      <BBCodeHint />
       <Box
         component="form"
         sx={{

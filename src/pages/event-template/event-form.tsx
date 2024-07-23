@@ -4,6 +4,7 @@ import useEvents from "../../hooks/useEvents";
 import { Button, Input } from "@mui/material";
 import { Box } from "@mui/material";
 import { TextField } from "@mui/material";
+import { BBCodeHint } from "../../components/bbcode-hint";
 
 export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
   const [info, setInfo] = useState<EventInfo>(eventInfo);
@@ -26,10 +27,11 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
               //выводить что что-то не так
             });
         }}
+        sx={{ marginX: "1rem" }}
       >
         Сохранить
       </Button>
-
+      <BBCodeHint />
       <Box
         component="form"
         sx={{

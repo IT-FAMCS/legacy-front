@@ -1,12 +1,10 @@
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import useDepartment from "../../hooks/useDepartment";
-import { useLocation } from "react-router-dom";
 import BBCode from "@bbob/react";
-import presetReact from "@bbob/preset-react";
 import { MainInfoForm } from "./main-info-form";
 import { MainInfoComponent } from "./main-info-component";
 import useQuestions from "../../hooks/useQuestions";
+import { options, plugins } from "../../constants/bbob";
 
 export default function MainInfoTemplate({
   mainInfoName,
@@ -14,7 +12,6 @@ export default function MainInfoTemplate({
   mainInfoName: string;
 }) {
   const { getQuestions } = useQuestions();
-  const plugins = [presetReact()];
 
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [mainQuestionInfo, setMainQuestionInfo] = useState({
@@ -34,8 +31,10 @@ export default function MainInfoTemplate({
 
   return (
     <div className="page-info-wrapper">
-      <h2>
-        <BBCode plugins={plugins}>{mainQuestionInfo.title}</BBCode>
+      <h2 style={{ marginBottom: "1rem" }}>
+        <BBCode plugins={plugins} options={options}>
+          {mainQuestionInfo.title}
+        </BBCode>
       </h2>
       <Button
         onClick={() => {

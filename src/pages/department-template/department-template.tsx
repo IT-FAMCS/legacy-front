@@ -5,7 +5,7 @@ import useDepartment from "../../hooks/useDepartment";
 import { useLocation } from "react-router-dom";
 import { DepartmentInfoComponent } from "./department-info";
 import BBCode from "@bbob/react";
-import presetReact from "@bbob/preset-react";
+import { options, plugins } from "../../constants/bbob";
 
 export default function DepartmentTemplate({
   departmentName,
@@ -14,7 +14,6 @@ export default function DepartmentTemplate({
 }) {
   const locale = useLocation();
   const { getDepartments } = useDepartment();
-  const plugins = [presetReact()];
 
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [departmentInfo, setDepartmentInfo] = useState({
@@ -51,8 +50,10 @@ export default function DepartmentTemplate({
 
   return (
     <div className="page-info-wrapper">
-      <h2>
-        <BBCode plugins={plugins}>{departmentInfo.title}</BBCode>
+      <h2 style={{ marginBottom: "1rem" }}>
+        <BBCode plugins={plugins} options={options}>
+          {departmentInfo.title}
+        </BBCode>
       </h2>
       <Button
         onClick={() => {
