@@ -3,6 +3,7 @@ import useQuestions from "../../hooks/useQuestions";
 import { QuestionInfo } from "../../interfaces/question";
 import { Box, Button, Input, TextField } from "@mui/material";
 import { BBCodeHint } from "../../components/bbcode-hint";
+import { BBCodeButtons } from "../../components/bbcode/bbcode-tags";
 
 export function MainInfoForm({
   mainQuestionInfo,
@@ -13,6 +14,7 @@ export function MainInfoForm({
 
   const [info, setInfo] = useState<QuestionInfo>(mainQuestionInfo);
   const [newInfo, setNewInfo] = useState<QuestionInfo>(mainQuestionInfo);
+  const [showError, setShowError] = useState<Boolean>(false);
 
   return (
     <>
@@ -22,11 +24,15 @@ export function MainInfoForm({
         onClick={() => {
           setInfo({ ...newInfo });
           changeQuestions({ data: newInfo })
-            .then(() => {
-              window.location.reload();
+            .then((res: QuestionInfo) => {
+              if (res.id) {
+                window.location.reload();
+              } else {
+                setShowError(true);
+              }
             })
             .catch((e) => {
-              //выводить что что-то не так
+              setShowError(true);
             });
         }}
         sx={{ marginX: "1rem" }}
@@ -34,6 +40,41 @@ export function MainInfoForm({
         Сохранить
       </Button>
       <BBCodeHint />
+      {showError && (
+        <Box
+          component="div"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: 1,
+            marginBottom: 1,
+            color: "red",
+          }}
+        >
+          <p>
+            {" "}
+            Ошибка: проверь что все поля не пустые (поле ссылок можно оставить
+            пустым)
+          </p>
+        </Box>
+      )}
+      <Box
+        component="div"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: 1,
+          marginBottom: 1,
+          position: "sticky",
+          top: 0,
+          bgcolor: "background.default",
+          zIndex: 1000,
+        }}
+      >
+        <BBCodeButtons />
+      </Box>
       <Box
         component="form"
         sx={{
@@ -54,6 +95,9 @@ export function MainInfoForm({
           onChange={(e) => {
             setNewInfo({ ...newInfo, title: e.target.value });
           }}
+          onBlur={(e) => {
+            setNewInfo({ ...newInfo, title: e.target.value });
+          }}
         />
         <TextField
           label="Информация"
@@ -61,6 +105,9 @@ export function MainInfoForm({
           name="info"
           multiline
           onChange={(e) => {
+            setNewInfo({ ...newInfo, info: e.target.value });
+          }}
+          onBlur={(e) => {
             setNewInfo({ ...newInfo, info: e.target.value });
           }}
         />

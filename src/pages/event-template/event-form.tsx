@@ -5,10 +5,12 @@ import { Button, Input } from "@mui/material";
 import { Box } from "@mui/material";
 import { TextField } from "@mui/material";
 import { BBCodeHint } from "../../components/bbcode-hint";
+import { BBCodeButtons } from "../../components/bbcode/bbcode-tags";
 
 export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
   const [info, setInfo] = useState<EventInfo>(eventInfo);
   const [newInfo, setNewInfo] = useState<EventInfo>(eventInfo);
+  const [showError, setShowError] = useState<Boolean>(false);
 
   const { changeEvent } = useEvents();
 
@@ -20,11 +22,15 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
         onClick={() => {
           setInfo({ ...newInfo });
           changeEvent({ data: newInfo })
-            .then(() => {
-              window.location.reload();
+            .then((res: EventInfo) => {
+              if (res.id) {
+                window.location.reload();
+              } else {
+                setShowError(true);
+              }
             })
             .catch((e) => {
-              //выводить что что-то не так
+              setShowError(true);
             });
         }}
         sx={{ marginX: "1rem" }}
@@ -32,6 +38,41 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
         Сохранить
       </Button>
       <BBCodeHint />
+      {showError && (
+        <Box
+          component="div"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: 1,
+            marginBottom: 1,
+            color: "red",
+          }}
+        >
+          <p>
+            {" "}
+            Ошибка: проверь что все поля не пустые (поле ссылок можно оставить
+            пустым)
+          </p>
+        </Box>
+      )}
+      <Box
+        component="div"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: 1,
+          marginBottom: 1,
+          position: "sticky",
+          top: 0,
+          bgcolor: "background.default",
+          zIndex: 1000,
+        }}
+      >
+        <BBCodeButtons />
+      </Box>
       <Box
         component="form"
         sx={{
@@ -52,6 +93,9 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           onChange={(e) => {
             setNewInfo({ ...newInfo, title: e.target.value });
           }}
+          onBlur={(e) => {
+            setNewInfo({ ...newInfo, title: e.target.value });
+          }}
         />
         <TextField
           label="Описание"
@@ -59,6 +103,9 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           multiline
           name="description"
           onChange={(e) => {
+            setNewInfo({ ...newInfo, description: e.target.value });
+          }}
+          onBlur={(e) => {
             setNewInfo({ ...newInfo, description: e.target.value });
           }}
         />
@@ -70,6 +117,9 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           onChange={(e) => {
             setNewInfo({ ...newInfo, structure: e.target.value });
           }}
+          onBlur={(e) => {
+            setNewInfo({ ...newInfo, structure: e.target.value });
+          }}
         />
         <TextField
           label="Работа"
@@ -79,6 +129,9 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           onChange={(e) => {
             setNewInfo({ ...newInfo, work: e.target.value });
           }}
+          onBlur={(e) => {
+            setNewInfo({ ...newInfo, work: e.target.value });
+          }}
         />
         <TextField
           label="FAQ"
@@ -86,6 +139,9 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           defaultValue={info.FAQ}
           name="FAQ"
           onChange={(e) => {
+            setNewInfo({ ...newInfo, FAQ: e.target.value });
+          }}
+          onBlur={(e) => {
             setNewInfo({ ...newInfo, FAQ: e.target.value });
           }}
         />

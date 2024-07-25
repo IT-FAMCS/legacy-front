@@ -99,6 +99,9 @@ export function DepartmentForm({
           onChange={(e) => {
             setNewInfo({ ...newInfo, title: e.target.value });
           }}
+          onBlur={(e) => {
+            setNewInfo({ ...newInfo, title: e.target.value });
+          }}
         />
         <TextField
           label="Описание"
@@ -106,6 +109,9 @@ export function DepartmentForm({
           multiline
           name="description"
           onChange={(e) => {
+            setNewInfo({ ...newInfo, description: e.target.value });
+          }}
+          onBlur={(e) => {
             setNewInfo({ ...newInfo, description: e.target.value });
           }}
         />
@@ -117,6 +123,9 @@ export function DepartmentForm({
           onChange={(e) => {
             setNewInfo({ ...newInfo, structure: e.target.value });
           }}
+          onBlur={(e) => {
+            setNewInfo({ ...newInfo, structure: e.target.value });
+          }}
         />
         <TextField
           label="Работа"
@@ -124,6 +133,9 @@ export function DepartmentForm({
           defaultValue={info.work}
           name="work"
           onChange={(e) => {
+            setNewInfo({ ...newInfo, work: e.target.value });
+          }}
+          onBlur={(e) => {
             setNewInfo({ ...newInfo, work: e.target.value });
           }}
         />
@@ -135,6 +147,9 @@ export function DepartmentForm({
           onChange={(e) => {
             setNewInfo({ ...newInfo, in_events: e.target.value });
           }}
+          onBlur={(e) => {
+            setNewInfo({ ...newInfo, in_events: e.target.value });
+          }}
         />
         <TextField
           label="FAQ"
@@ -142,6 +157,9 @@ export function DepartmentForm({
           defaultValue={info.FAQ}
           name="FAQ"
           onChange={(e) => {
+            setNewInfo({ ...newInfo, FAQ: e.target.value });
+          }}
+          onBlur={(e) => {
             setNewInfo({ ...newInfo, FAQ: e.target.value });
           }}
         />
