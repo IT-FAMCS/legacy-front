@@ -12,7 +12,7 @@ export const departmentsInfo = [
   {
     header: "Фандрайз",
     text: "Информация про отдел фандрайзинга",
-    link: "fundraising",
+    link: "fundraising-dep",
   },
   {
     header: "Декораторка",
