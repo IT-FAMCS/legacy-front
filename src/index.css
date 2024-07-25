@@ -35,3 +35,7 @@ code {
 ::-webkit-scrollbar-thumb {
   background-color: #19467c;
 }
+
+#root {
+  background-color: inherit;
+}

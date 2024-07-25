@@ -5,6 +5,7 @@ import { Button, Input } from "@mui/material";
 import { Box } from "@mui/material";
 import { TextField } from "@mui/material";
 import { BBCodeHint } from "../../components/bbcode-hint";
+import { BBCodeButtons } from "../../components/bbcode/bbcode-tags";
 
 export function DepartmentForm({
   departmentInfo,
@@ -15,6 +16,7 @@ export function DepartmentForm({
 
   const [info, setInfo] = useState<DepatmentInfo>(departmentInfo);
   const [newInfo, setNewInfo] = useState<DepatmentInfo>(departmentInfo);
+  const [showError, setShowError] = useState<Boolean>(false);
 
   return (
     <>
@@ -24,11 +26,15 @@ export function DepartmentForm({
         onClick={() => {
           setInfo({ ...newInfo });
           changeDepartment({ data: newInfo })
-            .then(() => {
-              window.location.reload();
+            .then((res: DepatmentInfo) => {
+              if (res.id) {
+                window.location.reload();
+              } else {
+                setShowError(true);
+              }
             })
             .catch((e) => {
-              //выводить что что-то не так
+              setShowError(true);
             });
         }}
         sx={{ marginX: "1rem" }}
@@ -36,6 +42,41 @@ export function DepartmentForm({
         Сохранить
       </Button>
       <BBCodeHint />
+      {showError && (
+        <Box
+          component="div"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: 1,
+            marginBottom: 1,
+            color: "red",
+          }}
+        >
+          <p>
+            {" "}
+            Ошибка: проверь что все поля не пустые (поле ссылок можно оставить
+            пустым)
+          </p>
+        </Box>
+      )}
+      <Box
+        component="div"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: 1,
+          marginBottom: 1,
+          position: "sticky",
+          top: 0,
+          bgcolor: "background.default",
+          zIndex: 1000,
+        }}
+      >
+        <BBCodeButtons />
+      </Box>
       <Box
         component="form"
         sx={{
@@ -47,6 +88,7 @@ export function DepartmentForm({
           marginTop: 5,
           marginBottom: 5,
           borderRadius: 2,
+          backgroundColor: "inherit",
         }}
       >
         <Input

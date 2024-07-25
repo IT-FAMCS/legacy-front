@@ -1,23 +1,26 @@
 import { IconButton, Tooltip } from "@mui/material";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import { BBCODE_TAGS_LIST } from "../constants/bbcode-tags";
 
 function BBCodeInfo() {
   return (
     <>
       <h4>"Информация по bbcode"</h4>
       <ul>
-        <li>[b]text[/b] - жирный текст</li>
-        <li>[i]text[/i] - наклонный текст</li>
-        <li>[br] - переход на следующую строку</li>
-        <li>[u]text[/u] - подчеркнутый текст</li>
-        <li>[quote]text[/quote] - цитата</li>
-        <li>[ul][/ul] - список с маркерами</li>
-        <li>[ol][/ol] - нумерованный список</li>
-        <li>[li]text[/li] - элемент списка</li>
-        <li>[code]код[/code] - код</li>
-        <li>Ждем обновлений</li>
+        {BBCODE_TAGS_LIST.map((tagInfo) => {
+          return (
+            <li key={tagInfo.tag}>
+              {tagInfo.text} - {tagInfo.description}
+            </li>
+          );
+        })}
+
+        <li>
+          Возможны обновления списка в будущем (свои предложения писать айтишке,
+          есть вариант добавить кастомный тег со своими стилями)
+        </li>
       </ul>
-      Если ввести тег неверно - текст будет выводится с ошибками.
+      Если ввести тег неверно - текст будет выводится с ошибками!!!
     </>
   );
 }

@@ -1,19 +1,10 @@
 import presetReact from "@bbob/preset-react";
-
-export const ALLOW_TAGS = [
-  "i",
-  "b",
-  "quote",
-  "code",
-  "br",
-  "u",
-  "ul",
-  "li",
-  "ol",
-];
+import { BBCODE_TAGS_LIST } from "./bbcode-tags";
 
 export const options = {
   enableEscapeTags: true,
-  onlyAllowTags: ALLOW_TAGS,
+  onlyAllowTags: BBCODE_TAGS_LIST.map((tagInfo) => {
+    return tagInfo.tag;
+  }),
 };
 export const plugins = [presetReact()];
