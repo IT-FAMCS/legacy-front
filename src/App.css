@@ -21,11 +21,7 @@ main {
   font-size: calc(10px + 2vmin);
   color: #ffffff;
   font-weight: 700;
-  position: sticky;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 1000;
 }
 
 .app-header__block {
