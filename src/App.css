@@ -145,3 +145,29 @@ figure figcaption {
   gap: 24px;
   text-align: left;
 }
+
+.links {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+}
+
+.links::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  display: block;
+  margin-top: 2px;
+  left: 0;
+  background: white;
+  transition:
+    width 0.3s ease,
+    left 0.3s ease;
+}
+
+.links:hover::after {
+  width: 100%;
+  left: 0;
+}
