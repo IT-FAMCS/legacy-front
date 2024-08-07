@@ -2,8 +2,10 @@ import { Button } from "@mui/material";
 import { departmentsInfo } from "../constants/departments-info";
 import { eventsInfo } from "../constants/events-info";
 import { creatorsInfo } from "../constants/creators-info";
-import tgIcon from "/Users/anna-maria/Documents/GitHub/legacy-front/src/images/tg.svg";
-import gitIcon from "/Users/anna-maria/Documents/GitHub/legacy-front/src/images/git.svg";
+import tgIcon from "../images/tg.svg";
+import gitIcon from "../images/git.svg";
+import { CreatorInfo } from "../interfaces/creators";
+import "../App.css";
 
 export const MenuCard = ({
   header,
@@ -83,18 +85,12 @@ export const MainInfoCard = ({
   );
 };
 
-export const CreatorCard = ({
+export const CreatorCard: React.FC<CreatorInfo> = ({
   title,
   tg,
   git,
   link_tg,
   link_git,
-}: {
-  title: string;
-  tg: string;
-  git: string;
-  link_tg: string;
-  link_git: string;
 }) => {
   return (
     <Button
@@ -121,17 +117,16 @@ export const CreatorCard = ({
             style={{ width: "35px", height: "35px", margin: "5px" }}
           />
           <a
+            className="links"
             href={link_tg}
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              textDecoration: "none",
               color: "white",
               textTransform: "lowercase",
             }}
           >
-            {" "}
-            <h2>{tg}</h2>
+            <h3>{tg}</h3>
           </a>
         </div>
         <div
@@ -147,17 +142,17 @@ export const CreatorCard = ({
             style={{ width: "40px", height: "40px", margin: "5px" }}
           />
           <a
+            className="links"
             href={link_git}
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              textDecoration: "none",
               color: "white",
               textTransform: "none",
             }}
           >
             {" "}
-            <h2> {git}</h2>
+            <h3> {git}</h3>
           </a>
         </div>
       </div>
