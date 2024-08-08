@@ -11,6 +11,8 @@ export default function CreatorsPage() {
             title={creator.title}
             tg={creator.tg}
             git={creator.git}
+            link_tg={creator.link_tg}
+            link_git={creator.link_git}
           />
         );
       })}
