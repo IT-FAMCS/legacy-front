@@ -9,7 +9,8 @@ export interface EventInfo {
   short_title: string;
   title: string;
   description: string;
-  structure: string;
-  work: string;
+  preparations: string;
+  info: string;
+  dates: string;
   FAQ: string;
 }
