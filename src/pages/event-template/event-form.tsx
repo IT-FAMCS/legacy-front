@@ -101,7 +101,7 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           label="Дата проведения"
           defaultValue={info.dates}
           multiline
-          name="description"
+          name="dates"
           onChange={(e) => {
             setNewInfo({ ...newInfo, dates: e.target.value });
           }}
