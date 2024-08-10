@@ -1,13 +1,13 @@
 .App {
   display: flex;
-  height: 100vh;
+  height: 100dvh;
   flex-direction: column;
   background-color: inherit;
 }
 
 main {
   overflow-y: auto;
-  height: calc(100vh - 120px);
+  height: calc(100dvh - 120px);
   background-color: inherit;
 }
 
@@ -106,7 +106,7 @@ main {
   justify-content: center;
   width: 100%;
   flex-direction: column;
-  height: calc(100vh - 120px);
+  height: calc(100dvh - 120px);
 }
 
 .page-info-wrapper {
@@ -115,7 +115,7 @@ main {
 }
 
 .loading {
-  height: calc(100vh - 120px);
+  height: calc(100dvh - 120px);
   display: flex;
   align-items: center;
   justify-content: center;
