@@ -16,7 +16,7 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
     <header className="app-header">
       <div className="app-header__block">
         <img src={racoon} alt="Raccoon logo" className="racccon-logo"></img>
-        <div className="project-name">LEGACY</div>
+        <div className="project-name">LEGACY</div>{" "}
       </div>
       <div className="app-header__block">
         <Button
