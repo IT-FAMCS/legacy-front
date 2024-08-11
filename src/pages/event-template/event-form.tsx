@@ -98,6 +98,18 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           }}
         />
         <TextField
+          label="Дата проведения"
+          defaultValue={info.dates}
+          multiline
+          name="dates"
+          onChange={(e) => {
+            setNewInfo({ ...newInfo, dates: e.target.value });
+          }}
+          onBlur={(e) => {
+            setNewInfo({ ...newInfo, dates: e.target.value });
+          }}
+        />
+        <TextField
           label="Описание"
           defaultValue={info.description}
           multiline
@@ -110,27 +122,27 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           }}
         />
         <TextField
-          label="Структура"
+          label="Подготовка"
           multiline
-          defaultValue={info.structure}
-          name="structure"
+          defaultValue={info.preparations}
+          name="preparations"
           onChange={(e) => {
-            setNewInfo({ ...newInfo, structure: e.target.value });
+            setNewInfo({ ...newInfo, preparations: e.target.value });
           }}
           onBlur={(e) => {
-            setNewInfo({ ...newInfo, structure: e.target.value });
+            setNewInfo({ ...newInfo, preparations: e.target.value });
           }}
         />
         <TextField
-          label="Работа"
+          label="Общая информация"
           multiline
-          defaultValue={info.work}
-          name="work"
+          defaultValue={info.info}
+          name="main-info"
           onChange={(e) => {
-            setNewInfo({ ...newInfo, work: e.target.value });
+            setNewInfo({ ...newInfo, info: e.target.value });
           }}
           onBlur={(e) => {
-            setNewInfo({ ...newInfo, work: e.target.value });
+            setNewInfo({ ...newInfo, info: e.target.value });
           }}
         />
         <TextField

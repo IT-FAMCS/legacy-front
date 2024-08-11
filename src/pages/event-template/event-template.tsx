@@ -17,8 +17,9 @@ export default function EventTemplate({ eventTitle }: { eventTitle: string }) {
     short_title: locale.pathname.split("/")[1],
     title: "",
     description: "",
-    structure: "",
-    work: "",
+    preparations: "",
+    info: "",
+    dates: "",
     FAQ: "",
   });
 
@@ -31,8 +32,9 @@ export default function EventTemplate({ eventTitle }: { eventTitle: string }) {
           short_title: locale.pathname.split("/")[1],
           title: "",
           description: "",
-          structure: "",
-          work: "",
+          preparations: "",
+          info: "",
+          dates: "",
           FAQ: "",
         });
       } else {
