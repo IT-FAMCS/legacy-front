@@ -6,22 +6,28 @@ import { options, plugins } from "../../constants/bbob";
 export function EventInfoComponent({ eventInfo }: { eventInfo: EventInfo }) {
   return (
     <div className="page-info-text-wrapper">
+      <h3>Дата проведения</h3>
+      <p>
+        <BBCode plugins={plugins} options={options}>
+          {eventInfo.dates}
+        </BBCode>
+      </p>
       <h3>Описание</h3>
       <p>
         <BBCode plugins={plugins} options={options}>
           {eventInfo.description}
         </BBCode>
       </p>
-      <h3>Структура</h3>
+      <h3>Подготовка</h3>
       <p>
         <BBCode plugins={plugins} options={options}>
-          {eventInfo.structure}
+          {eventInfo.preparations}
         </BBCode>
       </p>
-      <h3>Работа</h3>
+      <h3>Общая информация</h3>
       <p>
         <BBCode plugins={plugins} options={options}>
-          {eventInfo.work}
+          {eventInfo.info}
         </BBCode>
       </p>
       <h3>FAQ</h3>

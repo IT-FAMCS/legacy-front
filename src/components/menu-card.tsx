@@ -2,6 +2,10 @@ import { Button } from "@mui/material";
 import { departmentsInfo } from "../constants/departments-info";
 import { eventsInfo } from "../constants/events-info";
 import { creatorsInfo } from "../constants/creators-info";
+import tgIcon from "../images/tg.svg";
+import gitIcon from "../images/git.svg";
+import { CreatorInfo } from "../interfaces/creators";
+import "../App.css";
 
 export const MenuCard = ({
   header,
@@ -81,14 +85,12 @@ export const MainInfoCard = ({
   );
 };
 
-export const CreatorCard = ({
+export const CreatorCard: React.FC<CreatorInfo> = ({
   title,
   tg,
   git,
-}: {
-  title: string;
-  tg: string;
-  git: string;
+  link_tg,
+  link_git,
 }) => {
   return (
     <Button
@@ -102,8 +104,57 @@ export const CreatorCard = ({
     >
       <div className="ButtonText">
         <h2>{title}</h2>
-        <h4> telegram: {tg}</h4>
-        <h4> GitHub: {git}</h4>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src={tgIcon}
+            alt="Telegram"
+            style={{ width: "35px", height: "35px", margin: "5px" }}
+          />
+          <a
+            className="links"
+            href={link_tg}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "white",
+              textTransform: "lowercase",
+            }}
+          >
+            <h3>{tg}</h3>
+          </a>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src={gitIcon}
+            alt="GitHub"
+            style={{ width: "40px", height: "40px", margin: "5px" }}
+          />
+          <a
+            className="links"
+            href={link_git}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "white",
+              textTransform: "none",
+            }}
+          >
+            {" "}
+            <h3> {git}</h3>
+          </a>
+        </div>
       </div>
     </Button>
   );

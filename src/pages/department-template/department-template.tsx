@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { DepartmentInfoComponent } from "./department-info";
 import BBCode from "@bbob/react";
 import { options, plugins } from "../../constants/bbob";
+import { IsPhone } from "../../functions/check-is-phone";
 
 export default function DepartmentTemplate({
   departmentName,
@@ -55,13 +56,15 @@ export default function DepartmentTemplate({
           {departmentInfo.title}
         </BBCode>
       </h2>
-      <Button
-        onClick={() => {
-          setIsFormVisible(!isFormVisible);
-        }}
-      >
-        {isFormVisible ? "Скрыть форму" : "Показать форму"}
-      </Button>
+      {!IsPhone() && (
+        <Button
+          onClick={() => {
+            setIsFormVisible(!isFormVisible);
+          }}
+        >
+          {isFormVisible ? "Отменить" : "Редактировать"}
+        </Button>
+      )}
       {isFormVisible && <DepartmentForm departmentInfo={departmentInfo} />}
       {!isFormVisible && (
         <DepartmentInfoComponent departmentInfo={departmentInfo} />
