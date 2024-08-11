@@ -1,0 +1,49 @@
+ul ul {
+  margin-left: 1rem;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+span {
+  line-height: 1.75em;
+}
+ul li {
+  line-height: 1.75em;
+  margin: 0.25em 0;
+}
+
+blockquote {
+  background-color: #80808057;
+  border-radius: 20px;
+  border: 1px solid #757575;
+  padding: 1em;
+  font-style: italic;
+  line-height: 1.5em;
+}
+
+pre {
+  font-size: 0.8em;
+}
+
+h4 {
+  font-size: 1.25em;
+  margin-top: 1em;
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+  color: #3079d3;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #19467c;
+  transition: 0.3s;
+}
