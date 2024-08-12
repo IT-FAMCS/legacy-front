@@ -3,9 +3,15 @@ import IconButton from "@mui/material/IconButton";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import Popover from "@mui/material/Popover";
+import MenuIcon from "@mui/icons-material/Menu";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
+import Popover from "@mui/material/Popover";
 import { useState } from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface HeaderProps {
   themeMode: string;
@@ -14,6 +20,8 @@ interface HeaderProps {
 
 export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
   const locale = window.location;
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const isMobile = useMediaQuery("(max-width:768px)");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -22,6 +30,10 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
 
   const handlePopoverClose = () => {
     setAnchorEl(null);
+  };
+
+  const toggleDrawer = (open: boolean) => () => {
+    setDrawerOpen(open);
   };
 
   const handleLogout = () => {
@@ -38,9 +50,18 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
         }
       })
       .catch(error => console.error("Error logging out:", error));
-
-    handlePopoverClose();
   };
+
+  const menuItems = (
+    <List>
+      <ListItem button onClick={() => locale.replace("/")}>
+        <ListItemText primary="На главную" />
+      </ListItem>
+      <ListItem button onClick={handleLogout}>
+        <ListItemText primary="Выйти" />
+      </ListItem>
+    </List>
+  );
 
   return (
     <header className="app-header">
@@ -49,21 +70,32 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
         <div className="project-name">LEGACY</div>{" "}
       </div>
       <div className="app-header__block">
-        <Button
-          onClick={() => {
-            if (locale.pathname !== "/") {
-              locale.replace("/");
-            }
-          }}
-          variant="outlined"
-          sx={{ color: "white", borderColor: "white" }}
-        >
-          На главную
-        </Button>
-        <IconButton sx={{ ml: 1 }} onClick={toggleTheme} color="inherit">
-          {themeMode === "dark" ? <Brightness4Icon /> : <Brightness7Icon />}
-        </IconButton>
-        <IconButton
+        {isMobile ? (
+          <>
+            <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
+              <MenuIcon />
+            </IconButton>
+            <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+              {menuItems}
+            </Drawer>
+          </>
+        ) : (
+          <>
+            <Button
+              onClick={() => {
+                if (locale.pathname !== "/") {
+                  locale.replace("/");
+                }
+              }}
+              variant="outlined"
+              sx={{ color: "white", borderColor: "white" }}
+            >
+              На главную
+            </Button>
+            <IconButton sx={{ ml: 1 }} onClick={toggleTheme} color="inherit">
+              {themeMode === "dark" ? <Brightness4Icon /> : <Brightness7Icon />}
+            </IconButton>
+            <IconButton
           edge="end"
           aria-label="account of current user"
           onClick={handlePopoverOpen}
@@ -88,6 +120,8 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
             Выйти
           </Button>
         </Popover>
+          </>
+        )}
       </div>
     </header>
   );
