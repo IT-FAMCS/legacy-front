@@ -5,6 +5,7 @@ import { MainInfoForm } from "./main-info-form";
 import { MainInfoComponent } from "./main-info-component";
 import useQuestions from "../../hooks/useQuestions";
 import { options, plugins } from "../../constants/bbob";
+import { IsPhone } from "../../functions/check-is-phone";
 
 export default function MainInfoTemplate({
   mainInfoName,
@@ -36,13 +37,15 @@ export default function MainInfoTemplate({
           {mainQuestionInfo.title}
         </BBCode>
       </h2>
-      <Button
-        onClick={() => {
-          setIsFormVisible(!isFormVisible);
-        }}
-      >
-        {isFormVisible ? "Скрыть форму" : "Показать форму"}
-      </Button>
+      {!IsPhone() && (
+        <Button
+          onClick={() => {
+            setIsFormVisible(!isFormVisible);
+          }}
+        >
+          {isFormVisible ? "Отменить" : "Редактировать"}
+        </Button>
+      )}
       {isFormVisible && <MainInfoForm mainQuestionInfo={mainQuestionInfo} />}
       {!isFormVisible && (
         <MainInfoComponent mainQuestionInfo={mainQuestionInfo} />
