@@ -37,28 +37,20 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
   };
 
   const handleLogout = () => {
-    fetch(`${process.env.REACT_APP_HAND_URL}/api/users/logout/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(response => {
-        if (response.ok) {
-          localStorage.removeItem("token");
-          window.location.replace("/login");
-        }
-      })
-      .catch(error => console.error("Error logging out:", error));
+    localStorage.removeItem("token");
+    window.location.replace("/login");
   };
 
   const menuItems = (
     <List>
       <ListItem button onClick={() => locale.replace("/")}>
-        <ListItemText primary="На главную" />
+        <ListItemText primary="На главную" style={{ color: "white" }} />
+      </ListItem>
+      <ListItem button onClick={toggleTheme}>
+        <ListItemText primary="Сменить тему" style={{ color: "white" }} />
       </ListItem>
       <ListItem button onClick={handleLogout}>
-        <ListItemText primary="Выйти" />
+        <ListItemText primary="Выйти" style={{ color: "white" }} />
       </ListItem>
     </List>
   );
@@ -67,15 +59,29 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
     <header className="app-header">
       <div className="app-header__block">
         <img src={racoon} alt="Raccoon logo" className="racccon-logo"></img>
-        <div className="project-name">LEGACY</div>{" "}
+        <div className="project-name">LEGACY</div>
       </div>
       <div className="app-header__block">
         {isMobile ? (
           <>
-            <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
+            <IconButton
+              edge="end"
+              color="inherit"
+              onClick={toggleDrawer(true)}
+            >
               <MenuIcon />
             </IconButton>
-            <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+            <Drawer
+              anchor="right"
+              open={drawerOpen}
+              onClose={toggleDrawer(false)}
+              sx={{
+                "& .MuiDrawer-paper": {
+                  backgroundColor: "rgb(25, 70, 124)",
+                  width: 250,
+                },
+              }}
+            >
               {menuItems}
             </Drawer>
           </>
@@ -96,30 +102,30 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
               {themeMode === "dark" ? <Brightness4Icon /> : <Brightness7Icon />}
             </IconButton>
             <IconButton
-          edge="end"
-          aria-label="account of current user"
-          onClick={handlePopoverOpen}
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <Popover
-          open={Boolean(anchorEl)}
-          anchorEl={anchorEl}
-          onClose={handlePopoverClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-        >
-          <Button onClick={handleLogout} sx={{ m: 1 }}>
-            Выйти
-          </Button>
-        </Popover>
+              edge="end"
+              aria-label="account of current user"
+              onClick={handlePopoverOpen}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+            <Popover
+              open={Boolean(anchorEl)}
+              anchorEl={anchorEl}
+              onClose={handlePopoverClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+            >
+              <Button onClick={handleLogout} sx={{ m: 1 }}>
+                Выйти
+              </Button>
+            </Popover>
           </>
         )}
       </div>
