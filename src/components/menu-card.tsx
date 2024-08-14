@@ -28,7 +28,7 @@ export const MenuCard = ({
       }}
     >
       <div className="ButtonText">
-        <h2>{header}</h2>
+        <h4>{header}</h4>
         <div>{text}</div>
       </div>
     </Button>
@@ -54,7 +54,7 @@ export const EventCard = ({
       }}
     >
       <div className="ButtonText">
-        <h2>{header}</h2>
+        <h4>{header}</h4>
       </div>
     </Button>
   );
@@ -79,7 +79,7 @@ export const MainInfoCard = ({
       }}
     >
       <div className="ButtonText">
-        <h2>{header}</h2>
+        <h4>{header}</h4>
       </div>
     </Button>
   );

@@ -29,13 +29,6 @@ export const creatorsInfo = [
     link_git: "https://github.com/essaon",
   },
   {
-    title: "Станулевич Женя",
-    tg: "@stanulpych_60",
-    git: "stanulpych",
-    link_tg: "https://t.me/stanulpych_60",
-    link_git: "https://github.com/stanulpych",
-  },
-  {
     title: "Женя Рысь",
     tg: "@pblcb_ev",
     git: "PblCbGomel",
