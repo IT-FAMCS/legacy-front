@@ -27,4 +27,12 @@ export const mainInfo = [
     header: "История",
     link: "history",
   },
+  {
+    header: "Проведение редактуры",
+    link: "editing",
+  },
+  {
+    header: "Black-list редактуры",
+    link: "black-list",
+  },
 ];
