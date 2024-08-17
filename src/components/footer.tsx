@@ -1,10 +1,16 @@
 import { Button } from "@mui/material";
 
 export default function Footer() {
+  const locale = window.location;
   return (
     <footer className="app-footer">
       <div className="app-footer__name">ⓒ IT-FAMCS 2024</div>
       <Button
+        onClick={(event) => {
+          if (locale.pathname === "/creators") {
+            event.preventDefault();
+          }
+        }}
         className="CreatorButton"
         href="/creators"
         variant="outlined"
