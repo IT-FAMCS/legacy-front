@@ -5,7 +5,7 @@ main {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100dvh - 120px);
   font-size: 24px;
 }
 body {
