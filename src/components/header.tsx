@@ -43,13 +43,29 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
 
   const menuItems = (
     <List>
-      <ListItem button onClick={() => locale.replace("/")}>
+      <ListItem
+        button
+        onClick={() => {
+          if (locale.pathname !== "/") {
+            locale.replace("/");
+          }
+        }}
+      >
         <ListItemText primary="На главную" style={{ color: "white" }} />
       </ListItem>
       <ListItem button onClick={toggleTheme}>
         <ListItemText primary="Сменить тему" style={{ color: "white" }} />
       </ListItem>
-      <ListItem button onClick={handleLogout}>
+      <ListItem
+        button
+        onClick={(event) => {
+          if (locale.pathname === "/login") {
+            event.preventDefault();
+          } else {
+            handleLogout();
+          }
+        }}
+      >
         <ListItemText primary="Выйти" style={{ color: "white" }} />
       </ListItem>
     </List>
@@ -64,11 +80,7 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
       <div className="app-header__block">
         {isMobile ? (
           <>
-            <IconButton
-              edge="end"
-              color="inherit"
-              onClick={toggleDrawer(true)}
-            >
+            <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
               <MenuIcon />
             </IconButton>
             <Drawer
