@@ -162,7 +162,9 @@ figure figcaption {
   margin-top: 2px;
   left: 0;
   background: white;
-  transition: width 0.3s ease, left 0.3s ease;
+  transition:
+    width 0.3s ease,
+    left 0.3s ease;
 }
 
 .links:hover::after {
