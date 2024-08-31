@@ -3,30 +3,22 @@ import { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import useFormGuard from "../hooks/useFormGuard";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useAuth();
   const [isBadData, setIsBadData] = useState(false);
-  const [isFormDirty, setIsFormDirty] = useFormGuard();
 
   const loginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     login(email, password).then((res) => {
       if (res) {
-        setIsFormDirty(false);
         window.location.reload();
       } else {
         setIsBadData(true);
       }
     });
-  };
-
-  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setter(e.target.value);
-    setIsFormDirty(true);
   };
 
   return (
@@ -39,7 +31,7 @@ function LoginPage() {
         <TextField
           label="Username"
           value={email}
-          onChange={handleInputChange(setEmail)}
+          onChange={(e) => setEmail(e.target.value)}
           required
           fullWidth
           margin="normal"
@@ -49,7 +41,7 @@ function LoginPage() {
           type="password"
           label="Password"
           value={password}
-          onChange={handleInputChange(setPassword)}
+          onChange={(e) => setPassword(e.target.value)}
           required
           fullWidth
           margin="normal"

@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 import { Button, TextField, Snackbar, Alert } from "@mui/material";
 import useAuth from "../hooks/useAuth";
-import useFormGuard from "../hooks/useFormGuard";
 
 function RegistrationPage() {
   const [formData, setFormData] = useState({
@@ -15,14 +14,12 @@ function RegistrationPage() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const { register } = useAuth();
-  const [isFormDirty, setIsFormDirty] = useFormGuard();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-    setIsFormDirty(true);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,7 +44,6 @@ function RegistrationPage() {
         password: "",
         confirmPassword: "",
       });
-      setIsFormDirty(false);
     } catch (err) {
       console.error(err);
     }
