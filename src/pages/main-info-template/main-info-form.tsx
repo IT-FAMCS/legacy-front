@@ -4,6 +4,7 @@ import { QuestionInfo } from "../../interfaces/question";
 import { Box, Button, Input, TextField } from "@mui/material";
 import { BBCodeHint } from "../../components/bbcode-hint";
 import { BBCodeButtons } from "../../components/bbcode/bbcode-tags";
+import useFormGuard from "../../hooks/useFormGuard";
 
 export function MainInfoForm({
   mainQuestionInfo,
@@ -15,6 +16,12 @@ export function MainInfoForm({
   const [info, setInfo] = useState<QuestionInfo>(mainQuestionInfo);
   const [newInfo, setNewInfo] = useState<QuestionInfo>(mainQuestionInfo);
   const [showError, setShowError] = useState<Boolean>(false);
+  const [isFormDirty, setIsFormDirty] = useFormGuard();
+
+  const handleChange = (name: keyof QuestionInfo) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setNewInfo({ ...newInfo, [name]: e.target.value });
+    setIsFormDirty(true);
+  };
 
   return (
     <>
@@ -26,6 +33,7 @@ export function MainInfoForm({
           changeQuestions({ data: newInfo })
             .then((res: QuestionInfo) => {
               if (res.id) {
+                setIsFormDirty(false);
                 window.location.reload();
               } else {
                 setShowError(true);
@@ -92,24 +100,16 @@ export function MainInfoForm({
           placeholder="Заголовок"
           defaultValue={info.title}
           name="title"
-          onChange={(e) => {
-            setNewInfo({ ...newInfo, title: e.target.value });
-          }}
-          onBlur={(e) => {
-            setNewInfo({ ...newInfo, title: e.target.value });
-          }}
+          onChange={handleChange('title')}
+          onBlur={handleChange('title')}
         />
         <TextField
           label="Информация"
           defaultValue={info.info}
           name="info"
           multiline
-          onChange={(e) => {
-            setNewInfo({ ...newInfo, info: e.target.value });
-          }}
-          onBlur={(e) => {
-            setNewInfo({ ...newInfo, info: e.target.value });
-          }}
+          onChange={handleChange('info')}
+          onBlur={handleChange('info')}
         />
       </Box>
     </>
