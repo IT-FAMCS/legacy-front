@@ -6,6 +6,7 @@ import tgIcon from "../images/tg.svg";
 import gitIcon from "../images/git.svg";
 import { CreatorInfo } from "../interfaces/creators";
 import "../App.css";
+import { useState } from "react";
 
 export const MenuCard = ({
   header,
@@ -24,12 +25,13 @@ export const MenuCard = ({
         width: 300,
         color: "white",
         height: 150,
+        backgroundColor: "rgb(24, 118, 210)",
         margin: 5,
       }}
     >
       <div className="ButtonText">
-        <h2>{header}</h2>
-        <div>{text}</div>
+        <h2> {header} </h2>
+        <div> {text} </div>
       </div>
     </Button>
   );
@@ -50,6 +52,7 @@ export const EventCard = ({
         width: 300,
         color: "white",
         height: 150,
+        backgroundColor: "rgb(24, 118, 210)",
         margin: 5,
       }}
     >
@@ -74,6 +77,7 @@ export const MainInfoCard = ({
       sx={{
         width: 300,
         color: "white",
+        backgroundColor: "rgb(24, 118, 210)",
         height: 150,
         margin: 5,
       }}
@@ -98,6 +102,7 @@ export const CreatorCard: React.FC<CreatorInfo> = ({
       sx={{
         width: 300,
         color: "white",
+        backgroundColor: "rgb(24, 118, 210)",
         height: 200,
         margin: 5,
       }}
