@@ -13,7 +13,7 @@ function RegistrationPage() {
 
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
-  const { register } = useAuth();
+  const { register, notification } = useAuth();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({

@@ -7,10 +7,11 @@ import BBCode from "@bbob/react";
 import { EventInfoComponent } from "./event-info";
 import { options, plugins } from "../../constants/bbob";
 import { IsPhone } from "../../functions/check-is-phone";
+import Loader from "../../components/loader";
 
 export default function EventTemplate({ eventTitle }: { eventTitle: string }) {
   const locale = useLocation();
-  const { getEvents } = useEvent();
+  const { getEvents, loading, notification } = useEvent();
 
   const [eventInfo, setEventInfo] = useState({
     id: 0,
@@ -45,6 +46,10 @@ export default function EventTemplate({ eventTitle }: { eventTitle: string }) {
   }, []);
   const [isFormVisible, setIsFormVisible] = useState(false);
 
+  if (loading) {
+    return <Loader />;
+  }
+  
   return (
     <div className="page-info-wrapper">
       <h2 style={{ marginBottom: "1rem" }}>
