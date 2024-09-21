@@ -13,6 +13,8 @@ export default function useEvent() {
     onClose: () => setNotification((prev) => ({ ...prev, open: false })),
   });
 
+  const [loading, setLoading] = useState(false);
+
   async function changeEvent({ data }: { data: EventInfo }) {
     return await fetchPost(CREATE_EVENT, data, {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -20,10 +22,15 @@ export default function useEvent() {
   }
 
   async function getEvents(event = "") {
-    return await fetchGet(GET_EVENT + event, {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    }, setNotification);
+    setLoading(true);
+    try{
+      return await fetchGet(GET_EVENT + event, {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }, setNotification);
+    } finally{
+      setLoading(false);
+    }
   }
 
-  return { changeEvent, getEvents };
+  return { changeEvent, getEvents, notification, loading };
 }

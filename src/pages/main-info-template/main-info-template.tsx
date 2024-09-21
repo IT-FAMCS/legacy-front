@@ -6,13 +6,14 @@ import { MainInfoComponent } from "./main-info-component";
 import useQuestions from "../../hooks/useQuestions";
 import { options, plugins } from "../../constants/bbob";
 import { IsPhone } from "../../functions/check-is-phone";
+import Loader from "../../components/loader";
 
 export default function MainInfoTemplate({
   mainInfoName,
 }: {
   mainInfoName: string;
 }) {
-  const { getQuestions } = useQuestions();
+  const { getQuestions, loading, notification } = useQuestions();
 
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [mainQuestionInfo, setMainQuestionInfo] = useState({
@@ -29,6 +30,10 @@ export default function MainInfoTemplate({
       }
     });
   }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="page-info-wrapper">

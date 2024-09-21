@@ -13,17 +13,24 @@ export default function useDepartment() {
     onClose: () => setNotification((prev) => ({ ...prev, open: false })),
   });
 
+  const [loading, setLoading] = useState(false);
+
   async function changeDepartment({ data }: { data: DepatmentInfo }) {
-    return await  fetchPost(CREATE_DEPARTMENT, data, {
+    return await fetchPost(CREATE_DEPARTMENT, data, {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     }, setNotification);
   }
 
   async function getDepartments(department = "") {
-    return await fetchGet(GET_DEPARTMENT + department, {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    }, setNotification);
+    setLoading(true);
+    try {
+      return await fetchGet(GET_DEPARTMENT + department, {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }, setNotification);
+    } finally {
+      setLoading(false);
+    }
   }
 
-  return { changeDepartment, getDepartments };
+  return { changeDepartment, getDepartments, notification, loading };
 }

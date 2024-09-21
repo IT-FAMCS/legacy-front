@@ -13,6 +13,8 @@ export default function useQuestions() {
     onClose: () => setNotification((prev) => ({ ...prev, open: false })),
   });
 
+  const [loading, setLoading] = useState(false);
+
   async function changeQuestions({ data }: { data: QuestionInfo }) {
     return await fetchPost(CREATE_QUESTION, data, {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -20,10 +22,15 @@ export default function useQuestions() {
   }
 
   async function getQuestions(event = "") {
-    return await fetchGet(GET_QUESTIONS + event, {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    }, setNotification);
+    setLoading(true);
+    try{
+      return await fetchGet(GET_QUESTIONS + event, {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }, setNotification);
+    } finally{
+      setLoading(false);
+    }
   }
 
-  return { changeQuestions, getQuestions };
+  return { changeQuestions, getQuestions, notification, loading };
 }

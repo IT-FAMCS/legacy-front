@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const { login, notification } = useAuth();
   const [isBadData, setIsBadData] = useState(false);
 
   const loginSubmit = (event: React.FormEvent<HTMLFormElement>) => {

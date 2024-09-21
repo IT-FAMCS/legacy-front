@@ -7,6 +7,7 @@ import { DepartmentInfoComponent } from "./department-info";
 import BBCode from "@bbob/react";
 import { options, plugins } from "../../constants/bbob";
 import { IsPhone } from "../../functions/check-is-phone";
+import Loader from "../../components/loader";
 
 export default function DepartmentTemplate({
   departmentName,
@@ -14,7 +15,7 @@ export default function DepartmentTemplate({
   departmentName: string;
 }) {
   const locale = useLocation();
-  const { getDepartments } = useDepartment();
+  const { getDepartments, loading, notification } = useDepartment();
 
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [departmentInfo, setDepartmentInfo] = useState({
@@ -48,6 +49,10 @@ export default function DepartmentTemplate({
       }
     });
   }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="page-info-wrapper">

@@ -76,5 +76,5 @@ export default function useAuth() {
     }
   };
 
-  return { login, logout, checkToken, register };
+  return { login, logout, checkToken, register, notification };
 }
