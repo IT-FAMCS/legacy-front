@@ -1,0 +1,9 @@
+@media screen and (max-width: 768px) {
+  main {
+    font-size: 18px;
+  }
+
+  .page-info-text-wrapper {
+    padding: 0 2em;
+  }
+}

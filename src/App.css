@@ -166,12 +166,25 @@ figure figcaption {
   margin-top: 2px;
   left: 0;
   background: white;
-  transition:
-    width 0.3s ease,
-    left 0.3s ease;
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
 .links:hover::after {
   width: 100%;
   left: 0;
+}
+
+.ButtonText {
+  font-size: 16px;
+}
+
+.ButtonText h4 {
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.login-wrapper h3,
+.registration-wrapper h3 {
+  font-size: 24px;
 }

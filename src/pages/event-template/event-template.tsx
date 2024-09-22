@@ -6,6 +6,7 @@ import useEvent from "../../hooks/useEvents";
 import BBCode from "@bbob/react";
 import { EventInfoComponent } from "./event-info";
 import { options, plugins } from "../../constants/bbob";
+import { IsPhone } from "../../functions/check-is-phone";
 
 export default function EventTemplate({ eventTitle }: { eventTitle: string }) {
   const locale = useLocation();
@@ -51,9 +52,15 @@ export default function EventTemplate({ eventTitle }: { eventTitle: string }) {
           {eventInfo.title}
         </BBCode>
       </h2>
-      <Button onClick={() => setIsFormVisible(!isFormVisible)}>
-        {isFormVisible ? "Скрыть форму" : "Показать форму"}
-      </Button>
+      {!IsPhone() && (
+        <Button
+          onClick={() => {
+            setIsFormVisible(!isFormVisible);
+          }}
+        >
+          {isFormVisible ? "Отменить" : "Редактировать"}
+        </Button>
+      )}
       {isFormVisible && <EventForm eventInfo={eventInfo} />}
       {!isFormVisible && <EventInfoComponent eventInfo={eventInfo} />}
     </div>
