@@ -12,7 +12,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
 import Popover from "@mui/material/Popover";
-import { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface HeaderProps {
