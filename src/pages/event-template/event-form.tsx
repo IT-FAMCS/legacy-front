@@ -1,18 +1,23 @@
 import { useState } from "react";
 import { EventInfo } from "../../interfaces/event";
 import useEvents from "../../hooks/useEvents";
-import { Button, Input } from "@mui/material";
-import { Box } from "@mui/material";
-import { TextField } from "@mui/material";
+import { Button, Input, Box, TextField } from "@mui/material";
 import { BBCodeHint } from "../../components/bbcode-hint";
 import { BBCodeButtons } from "../../components/bbcode/bbcode-tags";
+import useFormGuard from "../../hooks/useFormGuard";
 
 export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
   const [info, setInfo] = useState<EventInfo>(eventInfo);
   const [newInfo, setNewInfo] = useState<EventInfo>(eventInfo);
   const [showError, setShowError] = useState<Boolean>(false);
+  const [isFormDirty, setIsFormDirty] = useFormGuard();
 
   const { changeEvent } = useEvents();
+
+  const handleChange = (name: keyof EventInfo) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setNewInfo({ ...newInfo, [name]: e.target.value });
+    setIsFormDirty(true);
+  };
 
   return (
     <>
@@ -24,6 +29,7 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           changeEvent({ data: newInfo })
             .then((res: EventInfo) => {
               if (res.id) {
+                setIsFormDirty(false);
                 window.location.reload();
               } else {
                 setShowError(true);
@@ -90,72 +96,48 @@ export function EventForm({ eventInfo }: { eventInfo: EventInfo }) {
           placeholder="Заголовок"
           defaultValue={info.title}
           name="title"
-          onChange={(e) => {
-            setNewInfo({ ...newInfo, title: e.target.value });
-          }}
-          onBlur={(e) => {
-            setNewInfo({ ...newInfo, title: e.target.value });
-          }}
+          onChange={handleChange('title')}
+          onBlur={handleChange('title')}
         />
         <TextField
           label="Дата проведения"
           defaultValue={info.dates}
           multiline
           name="dates"
-          onChange={(e) => {
-            setNewInfo({ ...newInfo, dates: e.target.value });
-          }}
-          onBlur={(e) => {
-            setNewInfo({ ...newInfo, dates: e.target.value });
-          }}
+          onChange={handleChange('dates')}
+          onBlur={handleChange('dates')}
         />
         <TextField
           label="Описание"
           defaultValue={info.description}
           multiline
           name="description"
-          onChange={(e) => {
-            setNewInfo({ ...newInfo, description: e.target.value });
-          }}
-          onBlur={(e) => {
-            setNewInfo({ ...newInfo, description: e.target.value });
-          }}
+          onChange={handleChange('description')}
+          onBlur={handleChange('description')}
         />
         <TextField
           label="Подготовка"
           multiline
           defaultValue={info.preparations}
           name="preparations"
-          onChange={(e) => {
-            setNewInfo({ ...newInfo, preparations: e.target.value });
-          }}
-          onBlur={(e) => {
-            setNewInfo({ ...newInfo, preparations: e.target.value });
-          }}
+          onChange={handleChange('preparations')}
+          onBlur={handleChange('preparations')}
         />
         <TextField
           label="Общая информация"
           multiline
           defaultValue={info.info}
           name="main-info"
-          onChange={(e) => {
-            setNewInfo({ ...newInfo, info: e.target.value });
-          }}
-          onBlur={(e) => {
-            setNewInfo({ ...newInfo, info: e.target.value });
-          }}
+          onChange={handleChange('info')}
+          onBlur={handleChange('info')}
         />
         <TextField
           label="FAQ"
           multiline
           defaultValue={info.FAQ}
           name="FAQ"
-          onChange={(e) => {
-            setNewInfo({ ...newInfo, FAQ: e.target.value });
-          }}
-          onBlur={(e) => {
-            setNewInfo({ ...newInfo, FAQ: e.target.value });
-          }}
+          onChange={handleChange('FAQ')}
+          onBlur={handleChange('FAQ')}
         />
         <TextField label="Полезные ссылки" name="links" />
       </Box>
