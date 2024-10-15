@@ -42,20 +42,6 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
     window.location.replace("/login");
   };
 
-  const menuItems = (
-    <List>
-      <ListItem button onClick={() => locale.replace("/")}>
-        <ListItemText primary="На главную" style={{ color: "white" }} />
-      </ListItem>
-      <ListItem button onClick={toggleTheme}>
-        <ListItemText primary="Сменить тему" style={{ color: "white" }} />
-      </ListItem>
-      <ListItem button onClick={handleLogout}>
-        <ListItemText primary="Выйти" style={{ color: "white" }} />
-      </ListItem>
-    </List>
-  );
-
   const [countClick, setCountClick] = useState(0);
   const [showImage, setShowImage] = useState(false);
   const [isBackgroundChanged, setIsBackgroundChanged] = useState(false);
@@ -107,6 +93,24 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
     };
   }, [isBackgroundChanged]);
 
+  const menuItems = (
+    <List>
+      <ListItem button onClick={() => locale.replace("/")}>
+        <ListItemText primary="На главную" style={{ color: "white" }} />
+      </ListItem>
+      <ListItem button onClick={toggleTheme}>
+        <ListItemText
+          primary="Сменить тему"
+          onClick={handleThemeButtonClick}
+          style={{ color: "white" }}
+        />
+      </ListItem>
+      <ListItem button onClick={handleLogout}>
+        <ListItemText primary="Выйти" style={{ color: "white" }} />
+      </ListItem>
+    </List>
+  );
+
   return (
     <header className="app-header">
       <div className="app-header__block">
@@ -132,14 +136,9 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
         )}
       </div>
       <div className="app-header__block">
-
         {isMobile ? (
           <>
-            <IconButton
-              edge="end"
-              color="inherit"
-              onClick={toggleDrawer(true)}
-            >
+            <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
               <MenuIcon />
             </IconButton>
             <Drawer
@@ -169,9 +168,14 @@ export const HeaderComponent = ({ toggleTheme, themeMode }: HeaderProps) => {
             >
               На главную
             </Button>
-            <IconButton sx={{ ml: 1 }} onClick={toggleTheme} color="inherit">
+            <IconButton
+              sx={{ ml: 1 }}
+              onClick={handleThemeButtonClick}
+              color="inherit"
+            >
               {themeMode === "dark" ? <Brightness4Icon /> : <Brightness7Icon />}
             </IconButton>
+
             <IconButton
               edge="end"
               aria-label="account of current user"
