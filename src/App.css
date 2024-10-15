@@ -32,6 +32,7 @@ main {
 .project-name {
   text-align: center;
   padding-left: 20px;
+  cursor: pointer;
 }
 .racccon-logo {
   width: 55px;
@@ -142,8 +143,11 @@ figure figcaption {
   flex-direction: column;
   align-items: flex-start;
   padding: 0 5rem;
-  gap: 24px;
   text-align: left;
+}
+
+.page-info-text-wrapper h3 {
+  margin-top: 24px;
 }
 
 .links {
